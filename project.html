@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <title>reaction timer</title>
+   <style>
+    #shape{
+    width:100px;
+    height:100px;
+    position: relative;
+    background-color: green;
+   }
+   body{
+    background-color: aqua;
+   }
+   .second{
+    text-align: center;
+    font-size: 20px;
+    border-style: dashed;
+    border-color: black;
+    border-radius: 20px;
+    height:auto;
+    width:auto;
+   }
+   </style>
+  </head>
+  <body>
+    <div class="second"><h1>reaction tester</h1>
+      <p>click the box as soon as possible</p>
+      <p>time taken </p>
+      <p id="third">0.00sec</p>
+    </div>
+
+<div id="shape"></div>
+<script>
+  var start= new Date().getTime();
+function move(){
+  var left;
+  var right;
+  var top;
+  var wh;
+  left=Math.floor(Math.random() * 300);
+  right=Math.floor(Math.random() * 300);
+  wh=Math.floor(Math.random() * 300)+100;
+  //left=Math.floor(Math.random() * 300)+;
+  document.getElementById("shape").style.left=left;
+  document.getElementById("shape").style.right=right;
+  document.getElementById("shape").style.width=wh;
+  document.getElementById("shape").style.top=wh;
+  document.getElementById("shape").style.backgroundColor=getRandomColor();
+   start= new Date().getTime();
+} 
+function getRandomColor() {
+var letters = '0123456789ABCDEF';
+var color = '#';
+for (var i = 0; i < 6; i++) {
+color += letters[Math.floor(Math.random() * 16)];
+}
+return color;
+}
+
+
+document.getElementById("shape").onclick=function(){
+  document.getElementById("shape").style.display="none";
+  var end= new Date().getTime();
+  var num=0;
+  num=(end-start)/1000;
+  console.log(num);
+  document.getElementById("third").innerHTML=num;
+  move();
+}
+</script>
+  </body>
+</html>
